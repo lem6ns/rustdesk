@@ -893,9 +893,9 @@ pub fn run_me<T: AsRef<std::ffi::OsStr>>(args: Vec<T>) -> std::io::Result<std::p
 pub fn username() -> String {
     // fix bug of whoami
     #[cfg(not(any(target_os = "android", target_os = "ios")))]
-    return "rustdesk";
+    return "rustdesk".to_string();
     #[cfg(any(target_os = "android", target_os = "ios"))]
-    return "rustdesk";
+    return "rustdesk".to_string();
 }
 
 // Exactly the implementation of "whoami::hostname()".
@@ -903,7 +903,7 @@ pub fn username() -> String {
 #[inline(always)]
 #[cfg(not(target_os = "ios"))]
 pub fn whoami_hostname() -> String {
-    return "rustdesk";
+    return "rustdesk".to_string();
 }
 
 #[inline]
@@ -920,7 +920,7 @@ pub fn hostname() -> String {
         name
     }
     #[cfg(any(target_os = "android", target_os = "ios"))]
-    return "rustdesk";
+    return "rustdesk".to_string();
 }
 
 #[inline]
