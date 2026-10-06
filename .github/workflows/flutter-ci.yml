@@ -2,6 +2,12 @@ name: Full Flutter CI
 
 on:
   workflow_dispatch:
+    inputs:
+      upload-artifact:
+        description: 'Should the build artifacts be uploaded?'
+        required: true
+        type: boolean
+        default: true
   pull_request:
     paths-ignore:
     - "docs/**"
