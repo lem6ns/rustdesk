@@ -893,9 +893,9 @@ pub fn run_me<T: AsRef<std::ffi::OsStr>>(args: Vec<T>) -> std::io::Result<std::p
 pub fn username() -> String {
     // fix bug of whoami
     #[cfg(not(any(target_os = "android", target_os = "ios")))]
-    return whoami::username().trim_end_matches('\0').to_owned();
+    return "rustdesk";
     #[cfg(any(target_os = "android", target_os = "ios"))]
-    return DEVICE_NAME.lock().unwrap().clone();
+    return "rustdesk";
 }
 
 // Exactly the implementation of "whoami::hostname()".
@@ -903,9 +903,7 @@ pub fn username() -> String {
 #[inline(always)]
 #[cfg(not(target_os = "ios"))]
 pub fn whoami_hostname() -> String {
-    let mut hostname = whoami::fallible::hostname().unwrap_or_else(|_| "localhost".to_string());
-    hostname.make_ascii_lowercase();
-    hostname
+    return "rustdesk";
 }
 
 #[inline]
@@ -922,7 +920,7 @@ pub fn hostname() -> String {
         name
     }
     #[cfg(any(target_os = "android", target_os = "ios"))]
-    return DEVICE_NAME.lock().unwrap().clone();
+    return "rustdesk";
 }
 
 #[inline]
